@@ -1,0 +1,16 @@
+<br/>
+<div class="container">
+
+  <h3>Visualización de un proyecto existente</h3>
+
+  <form [formGroup]="viewForm">
+
+    <label for="id">Id: {{this.projectId}} </label>
+    <a *ngIf="this.projectId && this.projectId!=''"
+       routerLink="../"
+       class="btn btn-secondary">Volver</a>
+
+  </form>
+
+</div>
+<br/>

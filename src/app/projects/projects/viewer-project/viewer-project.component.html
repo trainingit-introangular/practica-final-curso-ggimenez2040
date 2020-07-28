@@ -1,0 +1,7 @@
+<app-filter-projects-form-component (findProject)="findProject($event)"></app-filter-projects-form-component>
+
+<app-dashboard-component [projects]=projects
+                         [projectId]=projectId></app-dashboard-component>
+
+<app-viewer-project-form-component *ngIf="this.projectId && this.projectId!=''"
+                                   [projectId]=projectId></app-viewer-project-form-component>

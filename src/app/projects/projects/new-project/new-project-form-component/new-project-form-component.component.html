@@ -1,0 +1,19 @@
+<br/>
+<div class="container">
+  <h3>Nuevo proyecto</h3>
+
+  <form  class="form-group" [formGroup]="newProjectForm">
+
+    <label for="name">Nombre </label>
+
+    <input  class="form-control" name="name" formControlName="name" type="text"/>
+    <span> {{ getError('name')}} </span>
+
+    <button (click)="saveProject()"
+    [disabled]="newProjectForm.invalid">Guardar</button>
+
+  </form>
+</div>
+<br/>
+
+

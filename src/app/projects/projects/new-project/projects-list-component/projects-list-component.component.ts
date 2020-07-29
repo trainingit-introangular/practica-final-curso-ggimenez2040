@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ProjectApi } from '../../../../shared/models/project-api.model';
 
 @Component({
@@ -8,8 +8,13 @@ import { ProjectApi } from '../../../../shared/models/project-api.model';
 })
 export class ProjectsListComponentComponent implements OnInit {
   @Input() public projects: ProjectApi[] = [];
+  @Output() public deleteProjects = new EventEmitter<string>();
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  public deleteAllsProjects() {
+    this.deleteProjects.emit('');
+  }
 }

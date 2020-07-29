@@ -11,7 +11,8 @@ import { ProjectApi } from '../../../shared/models/project-api.model';
 })
 export class ViewerProjectComponent implements OnInit {
   public projects: ProjectApi[] = [];
-  public projectId = '';
+  public projectId = null;
+  public project: ProjectApi = null;
 
   constructor(
     activateRoute: ActivatedRoute,
@@ -19,10 +20,23 @@ export class ViewerProjectComponent implements OnInit {
     private notificationsStore: NotificationsStoreService
   ) {
     this.projectId = activateRoute.snapshot.params.id;
+
+    if (this.projectId) {
+      /*
+      this.projectsService.findProject(this.projectId).subscribe(data => {
+        const project: ProjectApi = data as ProjectApi;
+        this.project = project;
+      });*/
+      this.findProject(this.projectId);
+    }
   }
 
   ngOnInit(): void {
-    this.projectsService.projects.subscribe(res => (this.projects = res as ProjectApi[]));
+    this.projectsService.projects.subscribe(res => {
+      if (res && res != null && res !== undefined) {
+        this.projects = res as ProjectApi[];
+      }
+    });
   }
 
   public findProject(id: number) {
@@ -30,8 +44,11 @@ export class ViewerProjectComponent implements OnInit {
 
     this.projectsService.findProject(id).subscribe(data => {
       const project: ProjectApi = data as ProjectApi;
+      /*
       this.projects = [];
-      this.projects.push(project);
+      this.projects.push( project );
+      */
+      this.project = project;
     });
   }
 }

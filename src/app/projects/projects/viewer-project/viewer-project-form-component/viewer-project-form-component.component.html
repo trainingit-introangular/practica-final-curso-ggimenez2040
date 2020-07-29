@@ -1,14 +1,20 @@
 <br/>
 <div class="container">
 
-  <h3>Visualización de un proyecto existente</h3>
+  <h3>Visualización del proyecto seleccionado: </h3>
 
   <form [formGroup]="viewForm">
 
-    <label for="id">Id: {{this.projectId}} </label>
-    <a *ngIf="this.projectId && this.projectId!=''"
+    <label for="id">Id: {{this.project._id}} </label>
+    <br/>
+    <label for="name">Nombre: {{this.project.name}} </label>
+    <br/>
+    <label for="owner">Owner: {{this.project.owner}} </label>
+    <br/>
+
+    <a *ngIf="this.projectId"
        routerLink="../"
-       class="btn btn-secondary">Volver</a>
+       class="btn btn-secondary"> Volver</a>
 
   </form>
 

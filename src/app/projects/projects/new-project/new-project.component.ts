@@ -14,7 +14,11 @@ export class NewProjectComponent implements OnInit {
   constructor(private projectsService: ProjectsService, private notificationsStore: NotificationsStoreService) {}
 
   ngOnInit(): void {
-    this.projectsService.projects.subscribe(res => (this.projects = res as ProjectApi[]));
+    this.projectsService.projects.subscribe(res => {
+      if (res && res != null && res !== undefined) {
+        this.projects = res as ProjectApi[];
+      }
+    });
   }
 
   public saveProject(name: string) {
@@ -23,6 +27,13 @@ export class NewProjectComponent implements OnInit {
     this.projectsService.saveProject(name).subscribe(data => {
       const project: ProjectApi = data as ProjectApi;
       this.projects.push(project);
+    });
+  }
+
+  public deleteProjects() {
+    this.projectsService.deleteProjects().subscribe(data => {
+      const project: ProjectApi = data as ProjectApi;
+      this.projects = [];
     });
   }
 }

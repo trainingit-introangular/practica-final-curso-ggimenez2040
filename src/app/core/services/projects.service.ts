@@ -21,4 +21,8 @@ export class ProjectsService {
   public findProject(id: number): Observable<any> {
     return this.httpClient.get<any>(this.myProjectsApi + '/' + id);
   }
+
+  public deleteProjects(): Observable<any> {
+    return this.httpClient.delete<any>(this.myProjectsApi);
+  }
 }

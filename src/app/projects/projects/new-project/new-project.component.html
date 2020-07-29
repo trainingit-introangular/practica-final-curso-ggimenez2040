@@ -1,3 +1,7 @@
 <app-projects-list-component [projects]=projects></app-projects-list-component>
 
+<div class='container'>
+<button (click)="deleteProjects()">Borrar proyectos</button>
+</div>
+
 <app-new-project-form-component (createProject)=saveProject($event)></app-new-project-form-component>
